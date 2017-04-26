@@ -1,0 +1,34 @@
+{
+  "id": "/apresentacao-qcon",
+  "instances": 1,
+  "cpus": 0.01,
+  "mem": 56,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "docker-registry.chaordicsystems.com:5000/apresentacao-qcon:1.0",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "hostPort": 0,
+          "servicePort": 0,
+          "protocol": "tcp"
+        }
+      ],
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": true
+    }
+  },
+  "healthChecks": [],
+  "dependencies": [],
+  "labels": {
+    "minCpuPercent": "20",
+    "autoscale": "true",
+    "maxCpuPercent": "80",
+    "maxInstanceCount": "15",
+    "minInstanceCount": "1"
+  }
+}

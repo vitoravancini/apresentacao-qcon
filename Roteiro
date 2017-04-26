@@ -1,0 +1,10 @@
+sudo docker build -t docker-registry.chaordicsystems.com:5000/apresentacao-qcon:1.0 .
+sudo docker push docker-registry.chaordicsystems.com:5000/apresentacao-qcon:1.0
+
+curl marathon.platform.chaordicsystems.com:8080/v2/apps -XPOST -d @marathon-deploy.json -H 'Content-type: application/json'
+
+curl microservices.platformlb.chaordicsystems.com -H "Host: apresentacao-qcon"
+watch -d 'curl microservices.platformlb.chaordicsystems.com -H "Host: apresentacao-qcon"'
+
+//RODAR NA AWS
+siege -c50 -t10m -b microservices.platformlb.chaordicsystems.com -H "Host: apresentacao-qcon"'
